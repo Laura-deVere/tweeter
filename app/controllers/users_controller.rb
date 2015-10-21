@@ -24,19 +24,21 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
-    if @user.save
-  	 session[:user_id] = @user.id
-  	 redirect_to @user, notice: "New account created!"
+    if 
+      @user.save
+  	   session[:user_id] = @user.id
+  	   redirect_to @user, notice: "New account created!"
     else
       render :new
     end
   end
 
   def update
-    if @user.update(user_params)
+    if 
+      @user.update(user_params)
       redirect_to @user, notice: "Account updated!"
     else
-      render :edit
+       render :edit 
     end
   end
 
@@ -70,20 +72,20 @@ class UsersController < ApplicationController
   end
 
   def set_user
-  	begin
-      if params[:username]
-        username = params[:username]
-        @user = User.where('lower(username) = ?', username.downcase).first
-        unless @user
-          flash[:notice] = "That user could not be found."
-          redirect_to users_path
-        end
-      else
+  	# begin
+   #    if params[:username]
+   #      username = params[:username]
+   #      @user = User.where('lower(username) = ?', username.downcase).first
+   #      unless @user
+   #        flash[:notice] = "That user could not be found."
+   #        redirect_to users_path
+   #      end
+   #    else
         @user = User.find(params[:id])
-      end
-  	rescue
-  		flash[:notice] = "That user could not be found."
-  		redirect_to users_path
-  	end
+   #    end
+  	# rescue
+  	# 	flash[:notice] = "That user could not be found."
+  	# 	redirect_to users_path
+  	# end
   end
 end

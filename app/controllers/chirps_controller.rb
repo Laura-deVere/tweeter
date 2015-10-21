@@ -3,7 +3,7 @@ class ChirpsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 	
 	def index
-		@chirps = Chirp.last(10).reverse
+		@chirps = Chirp.all
 	end
 
 	def new
@@ -17,7 +17,7 @@ class ChirpsController < ApplicationController
 	end
 
 	def create
-		@chirp = Chirp.new(chirp_params)
+		@chirp = Chirp.new
 		if @chirp.save
 			redirect_to chirp_path(@chirp.id), notice: "Chirp! Chirp! Chirp!"
 		else

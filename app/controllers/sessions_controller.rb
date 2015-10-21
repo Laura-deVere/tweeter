@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
   	@user = User.find_by(email: params[:email])
-  	puts "User is #{@user.inspect}"
+  	#puts "User is #{@user.inspect}"
   	if @user and @user.password == params[:password]
   		session[:user_id] = @user.id
   		redirect_to chirps_path, notice: "logged in!"
