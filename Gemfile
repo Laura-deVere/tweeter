@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
- gem 'passenger'
+gem 'newrelic_rpm'
+gem 'passenger'
 gem 'database_cleaner'
 gem 'quiet_assets', group: :development
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
